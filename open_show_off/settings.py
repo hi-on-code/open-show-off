@@ -29,7 +29,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['open-show-off.herokuapp.com']
 
 # configuration for python social auth
 SOCIAL_AUTH_GITHUB_KEY = config('GITHUB_KEY')
