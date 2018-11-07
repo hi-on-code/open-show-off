@@ -19,10 +19,12 @@ from django.conf.urls import url
 from django.urls import include, path
 import social_django
 from .views import home
+from . import views
 
 urlpatterns = [
-    url(r'^$', home, name='home'),
-    
+    # url(r'^$', home, name='home'),
+    path('github/', include('show_off_github.urls')),
+    url(r'^$', home, name='home'),    
     url(r'^login/$', auth_views.LoginView.as_view(), name='login'),
     url(r'^logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('admin/', admin.site.urls),
