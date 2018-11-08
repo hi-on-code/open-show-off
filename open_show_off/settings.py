@@ -33,8 +33,12 @@ DEBUG = True
 ALLOWED_HOSTS = ['open-show-off.herokuapp.com']
 
 # configuration for python social auth
-SOCIAL_AUTH_GITHUB_KEY = config('GITHUB_KEY')
-SOCIAL_AUTH_GITHUB_SECRET = config('GITHUB_SECRET')
+if config('ENVIRON') == 'DEV':
+    SOCIAL_AUTH_GITHUB_KEY = config('GITHUB_KEY_LOCAL')
+    SOCIAL_AUTH_GITHUB_SECRET = config('GITHUB_SECRET_LOCAL')
+else:
+    SOCIAL_AUTH_GITHUB_KEY = config('GITHUB_KEY')
+    SOCIAL_AUTH_GITHUB_SECRET = config('GITHUB_SECRET')
 
 # Application definition
 
