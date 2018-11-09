@@ -21,7 +21,6 @@ def index(request):
         
     ]
     for a_repo in g.get_user().get_repos():
-        print(a_repo)
         # g.AuthenticatedUser.AuthenticatedUser.get_repo(repo.url)
         current_repo = {}
         if a_repo.parent:
