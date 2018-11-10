@@ -20,7 +20,9 @@ def index(request):
     project_arr = [
         
     ]
-    for a_repo in g.get_user().get_repos():
+    all_repos = g.get_user().get_repos()
+    print('all_repos', all_repos)
+    for a_repo in all_repos:
         print(a_repo)
         # g.AuthenticatedUser.AuthenticatedUser.get_repo(repo.url)
         current_repo = {}
