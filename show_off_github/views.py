@@ -21,6 +21,7 @@ def index(request):
     project_arr = [
         
     ]
+    print('testing to print')
     all_repos = g.get_user().get_repos()
     print('all_repos', all_repos)
     sys.stdout.flush()
