@@ -368,7 +368,7 @@ var ProjectService = /** @class */ (function () {
     function ProjectService(http, messageService) {
         this.http = http;
         this.messageService = messageService;
-        this.projectsUrl = 'github';
+        this.projectsUrl = 'github/';
     }
     ProjectService.prototype.getProjects = function () {
         return this.http.get(this.projectsUrl);
