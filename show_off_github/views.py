@@ -21,12 +21,9 @@ def index(request):
     project_arr = [
         
     ]
-    print('testing to print')
     all_repos = g.get_user().get_repos()
-    print('all_repos', all_repos)
     sys.stdout.flush()
     for a_repo in all_repos:
-        print(a_repo)
         sys.stdout.flush()
         # g.AuthenticatedUser.AuthenticatedUser.get_repo(repo.url)
         current_repo = {}
