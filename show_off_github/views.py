@@ -1,4 +1,5 @@
 import json
+import sys
 
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -22,8 +23,10 @@ def index(request):
     ]
     all_repos = g.get_user().get_repos()
     print('all_repos', all_repos)
+    sys.stdout.flush()
     for a_repo in all_repos:
         print(a_repo)
+        sys.stdout.flush()
         # g.AuthenticatedUser.AuthenticatedUser.get_repo(repo.url)
         current_repo = {}
         if a_repo.parent:
