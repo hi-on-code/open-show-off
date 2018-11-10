@@ -6,11 +6,6 @@ from django.contrib.auth.decorators import login_required
 from github import Github
 from github.NamedUser import NamedUser
 
-# from social_django import social_auth_usersocialauth
-
-
-
-# g = Github('s-surineni', ACCESS_TOKEN)
 
 @login_required
 def index(request):

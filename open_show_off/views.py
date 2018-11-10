@@ -7,5 +7,5 @@ from django.views.generic import TemplateView
 #     return render(request, 'home.html')
 
 @login_required
-def home(request):
+def home(request, *args, **kwargs):
     return render(request, 'index.html', context=None)
