@@ -10,17 +10,25 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.1.1/bootstrap-social.css">
     </head>
     <body>
-        <div class="login-page">
-            <div class="form">
-                <form class="login-form">
-                    <h2>Login Here</h2>
-                    <div>
-                        <a href="{% url 'social:begin' 'github' %}"
-                           class="btn btn-block btn-social btn-github">
-                            <span class="fa fa-github"></span> Sign in with GitHub
-                        </a>
+        <div class="flex-box">
+            <div class="form-box">
+                <div class="form-inner">
+                    <div class="logo-box">
+                        <div class="logo-inner">
+                            <div class="logo-actual">Samskrit</div>
+                        </div>
                     </div>
-                </form>
+                    <div class="signin-box">
+                        <div class="inner-sign">
+                            <a href="{% url 'social:begin' 'github' %}"
+                               class="btn btn-block btn-social btn-github"
+                               id="btn-gh">
+                                <span class="fa fa-github"
+                                      id="btn-gh"></span> Sign in with GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
