@@ -1,4 +1,5 @@
 import json
+import logging
 
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -6,11 +7,7 @@ from django.contrib.auth.decorators import login_required
 from github import Github
 from github.NamedUser import NamedUser
 
-# from social_django import social_auth_usersocialauth
-
-
-
-# g = Github('s-surineni', ACCESS_TOKEN)
+logger = logging.getLogger(__name__)
 
 @login_required
 def index(request):
@@ -20,6 +17,11 @@ def index(request):
     project_arr = [
         
     ]
+    logger.info("Fetching user repos from github")
+    logger.warn("Fetching user repos from github")
+    # logger.warining("Fetching user repos from github")
+    print(logger)
+    print(dir(logger))
     for a_repo in g.get_user().get_repos():
         current_repo = {}
         if a_repo.parent:

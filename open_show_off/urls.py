@@ -15,18 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.contrib.auth import views as auth_views #, logout
-from django.conf.urls import url
 from django.urls import include, path
 import social_django
 from .views import home
 from . import views
 
 urlpatterns = [
-    # url(r'^$', home, name='home'),
     path('github/', include('show_off_github.urls')),
-    url(r'^login/$', auth_views.LoginView.as_view(), name='login'),
-    url(r'^logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('admin/', admin.site.urls),
-    url('', include('social_django.urls', namespace='social')),
-    url(r'^', home, name='home'),    
+    path('', include('social_django.urls', namespace='social')),
+    path('<path:path>', home, name='home'),
+    path('', home, name='home'),    
 ]
