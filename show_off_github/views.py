@@ -20,23 +20,13 @@ def index(request):
     logger.info("Fetching user repos from github")
     logger.warn("Fetching user repos from github")
     # logger.warining("Fetching user repos from github")
-    print(logger)
-    print(dir(logger))
     for a_repo in g.get_user().get_repos():
+        a_repo = (g.get_repo(a_repo.parent.url.split('repos/')[1])) if a_repo.parent else a_repo
         current_repo = {}
-        if a_repo.parent:
-            parent_repo = (g.get_repo(a_repo.parent.url.split('repos/')[1]))
-            # current_repo['id'] = parent_repo.id
-            current_repo['id'] = parent_repo.id
-            current_repo['name'] = parent_repo.name
-            current_repo['stars'] = parent_repo.stargazers_count
-
-        else:
-            current_repo['id'] = a_repo.id
-            current_repo['name'] = a_repo.name
-            current_repo['stars'] = a_repo.stargazers_count
+        current_repo['avatar'] = a_repo.owner.avatar_url
+        current_repo['description'] = a_repo.description
+        current_repo['id'] = a_repo.id
+        current_repo['name'] = a_repo.name
+        current_repo['stars'] = a_repo.stargazers_count
         project_arr.append(current_repo)
-
-
-
     return HttpResponse(json.dumps(project_arr))
