@@ -21,11 +21,13 @@ from .views import home
 from . import views
 
 urlpatterns = [
+    # TODO: see if these two can be combined into one
     path('github/', include('show_off_github.urls')),
+    # path('github/<str:user_name>', include('show_off_github.urls')),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('admin/', admin.site.urls),
     path('', include('social_django.urls', namespace='social')),
     path('<path:path>', home, name='home'),
-    path('', home, name='home'),    
+    path('', home, name='home'),
 ]

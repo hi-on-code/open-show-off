@@ -11,17 +11,19 @@ import github
 logger = logging.getLogger(__name__)
 
 @login_required
-def index(request):
+def index(request, user_name=None):
+
     extra_data = request.user.social_auth.get(provider='github').extra_data
+    if not user_name:
+        user_name = extra_data['login']
+    print('*' * 80)
+    print('user_name', user_name) 
     g = github.MainClass.Github(extra_data['login'], extra_data['access_token'])
     project_arr = []
     logger.info("Fetching user repos from github")
     logger.warn("Fetching user repos from github")
     # logger.warining("Fetching user repos from github")
-
-    
-
-    ret_val = g.search_issues(query='author:s-surineni', type='pr')
+    ret_val = g.search_issues(query='author:{}'.format(user_name), type='pr')
 
     for pr in ret_val:
         current_repo = {}
