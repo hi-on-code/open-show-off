@@ -330,6 +330,8 @@ MIT
 @angular/animations
 MIT
 
+@angular/material/button
+
 zone.js
 MIT
 The MIT License

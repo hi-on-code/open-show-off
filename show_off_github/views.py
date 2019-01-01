@@ -44,7 +44,6 @@ def index(request):
     #     current_repo['description'] = a_repo.description
     #     current_repo['avatar'] = a_repo.owner.avatar_url
     #     project_arr.append(current_repo)
-    #     print(current_repo)
     # project_arr = sorted(project_arr, key=lambda val: val['stars'],
     #                      reverse=True)
 
@@ -52,14 +51,9 @@ def index(request):
     # GET: github.MainClass.Github.search_issues()
     # repositories = g.search_repositories(query='language:python')
     # for repo in repositories:
-    #     print(repo)
     ret_val = g.search_issues(query='author:s-surineni', type='pr')
 
     for pr in ret_val:
-        print(pr)
-        print(pr.repository)
-        print(dir(pr.repository))
-        # print(dir(pr))
         current_repo = {}
         a_repo = pr.repository
         if a_repo.stargazers_count < 5:
@@ -70,8 +64,6 @@ def index(request):
         current_repo['description'] = a_repo.description
         current_repo['avatar'] = a_repo.owner.avatar_url
         project_arr.append(current_repo)
-        print(current_repo)
     project_arr = sorted(project_arr, key=lambda val: val['stars'],
                          reverse=True)
-    print(ret_val.get_page(0))
     return HttpResponse(json.dumps(project_arr))
