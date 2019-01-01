@@ -325,10 +325,10 @@ MIT
 @angular/router
 MIT
 
+@angular/material/card
+
 @angular/animations
 MIT
-
-@angular/material/progress-spinner
 
 zone.js
 MIT
