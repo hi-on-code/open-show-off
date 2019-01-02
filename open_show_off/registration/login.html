@@ -12,7 +12,7 @@
     <body>
         <div class="login-page">
             <div class="form">
-                <a href="{% url 'social:begin' 'github' %}"
+                <a href="{% url 'social:begin' 'github' %}?next={{ request.GET.next }}""
                    class="btn btn-block btn-social btn-github"
                    id="btn-gh">
                     <span class="fa fa-github"
