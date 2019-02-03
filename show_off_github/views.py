@@ -16,21 +16,22 @@ def index(request, user_name=None):
     extra_data = request.user.social_auth.get(provider='github').extra_data
     if not user_name:
         user_name = extra_data['login']
-    print('*' * 80)
-    print('user_name', user_name) 
     g = github.MainClass.Github(extra_data['login'], extra_data['access_token'])
     project_arr = []
     logger.info("Fetching user repos from github")
     logger.warn("Fetching user repos from github")
     # logger.warining("Fetching user repos from github")
     ret_val = g.search_issues(query='author:{}'.format(user_name), type='pr')
-
+    uniq_ids = []
     for pr in ret_val:
         current_repo = {}
         a_repo = pr.repository
         if a_repo.stargazers_count < 5:
             continue
         current_repo['id'] = a_repo.id
+        if a_repo.id in uniq_ids:
+            continue
+        uniq_ids.append(a_repo.id)
         current_repo['name'] = a_repo.name
         current_repo['stars'] = a_repo.stargazers_count
         current_repo['description'] = a_repo.description
@@ -39,3 +40,9 @@ def index(request, user_name=None):
     project_arr = sorted(project_arr, key=lambda val: val['stars'],
                          reverse=True)
     return HttpResponse(json.dumps(project_arr))
+
+
+def get_user_name(request):
+    return HttpResponse(
+        json.dumps(request.user.social_auth.get(provider='github')
+                   .extra_data['login']))
