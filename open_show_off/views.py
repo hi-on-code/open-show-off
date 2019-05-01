@@ -8,4 +8,8 @@ from django.views.generic import TemplateView
 
 @login_required
 def home(request, *args, **kwargs):
+    print('home')
+    print('args', args)
+    print('kwargs', kwargs)
+    print('request', request.path_info)
     return render(request, 'index.html', context=None)

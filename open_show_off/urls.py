@@ -29,6 +29,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('social_django.urls', namespace='social')),
     path('projects/<path:path>', home, name='home'),
+    # this is to send all the rest of the urls to home page in angular
     path('<path:path>', home, name='home'),
     path('', home, name='home'),
 ]
