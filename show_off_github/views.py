@@ -37,6 +37,7 @@ def index(request, userName=None):
         current_repo['stars'] = a_repo.stargazers_count
         current_repo['description'] = a_repo.description
         current_repo['avatar'] = a_repo.owner.avatar_url
+        current_repo['html_url'] = a_repo.html_url
         project_arr.append(current_repo)
     project_arr = sorted(project_arr, key=lambda val: val['stars'],
                          reverse=True)

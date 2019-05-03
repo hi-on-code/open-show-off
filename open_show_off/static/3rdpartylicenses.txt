@@ -325,12 +325,8 @@ MIT
 @angular/router
 MIT
 
-@angular/material/card
-
 @angular/animations
 MIT
-
-@angular/material/button
 
 zone.js
 MIT
