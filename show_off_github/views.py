@@ -10,10 +10,9 @@ import github
 
 logger = logging.getLogger(__name__)
 
+
 @login_required
 def index(request, userName=None):
-    print('view', 'index in show_off_github')
-    print('urls', request.path_info)
     extra_data = request.user.social_auth.get(provider='github').extra_data
     if not userName:
         userName = extra_data['login']
